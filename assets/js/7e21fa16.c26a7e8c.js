@@ -1,0 +1,9 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[6878],{7403:(n,t,e)=>{e.r(t),e.d(t,{assets:()=>u,contentTitle:()=>d,default:()=>x,frontMatter:()=>a,metadata:()=>o,toc:()=>l});const o=JSON.parse('{"id":"tech-docs/kubernetes/components/containerd/statusBinFiles","title":"statusBinFiles","description":"{dedent`","source":"@site/docs/tech-docs/kubernetes/components/containerd/statusBinFiles.mdx","sourceDirName":"tech-docs/kubernetes/components/containerd","slug":"/tech-docs/kubernetes/components/containerd/statusBinFiles","permalink":"/in-cloud/tech-docs/kubernetes/components/containerd/statusBinFiles","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var r=e(74848),s=e(28453),i=e(60513),c=e(1775);const a={},d=void 0,u={},l=[];function m(n){const t={admonition:"admonition",mdxAdmonitionTitle:"mdxAdmonitionTitle",...(0,s.R)(),...n.components};return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(c.A,{language:"bash",children:i.A`
+      ls -la /usr/local/bin/ | grep containerd
+  `}),"\n",(0,r.jsxs)(t.admonition,{type:"info",children:[(0,r.jsx)(t.mdxAdmonitionTitle,{}),(0,r.jsx)(c.A,{language:"bash",children:i.A`
+      -rwxr-xr-x  1 root root  54855296 Feb 18 09:30 containerd
+      -rwxr-xr-x  1 root root   7176192 Feb 18 15:12 containerd-shim
+      -rwxr-xr-x  1 root root   8884224 Feb 18 15:12 containerd-shim-runc-v1
+      -rwxr-xr-x  1 root root  12169216 Feb 18 15:12 containerd-shim-runc-v2
+      -rwxr-xr-x  1 root root  25932232 Feb 18 15:12 containerd-stress
+  `})]})]})}function x(n={}){const{wrapper:t}={...(0,s.R)(),...n.components};return t?(0,r.jsx)(t,{...n,children:(0,r.jsx)(m,{...n})}):m(n)}}}]);

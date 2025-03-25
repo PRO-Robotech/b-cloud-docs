@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ru" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-tech-docs/b-cloud/project/resource" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Ресурс Project | B-Cloud</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="http://example.com/in-cloud/tech-docs/b-cloud/project/resource"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Ресурс Project | B-Cloud"><meta data-rh="true" name="description" content="Project — представляет собой введенную абстракцию, созданную для обеспечения команды отдельным пространством имен, предназначенным для управления и развертывания необходимых инфраструктурных ресурсов. Основная цель проекта — предоставить клиенту выделенную область для управления информационными системами, где можно организовать доступ разработчиков и администраторов, гибко контролировать выделенные ресурсы и квоты, отслеживать состояние развернутых систем и интегрироваться с инструментами DevOps для эффективного управления инфраструктурой."><meta data-rh="true" property="og:description" content="Project — представляет собой введенную абстракцию, созданную для обеспечения команды отдельным пространством имен, предназначенным для управления и развертывания необходимых инфраструктурных ресурсов. Основная цель проекта — предоставить клиенту выделенную область для управления информационными системами, где можно организовать доступ разработчиков и администраторов, гибко контролировать выделенные ресурсы и квоты, отслеживать состояние развернутых систем и интегрироваться с инструментами DevOps для эффективного управления инфраструктурой."><link data-rh="true" rel="icon" href="/in-cloud/img/favicon.ico"><link data-rh="true" rel="canonical" href="http://example.com/in-cloud/tech-docs/b-cloud/project/resource"><link data-rh="true" rel="alternate" href="http://example.com/in-cloud/tech-docs/b-cloud/project/resource" hreflang="ru"><link data-rh="true" rel="alternate" href="http://example.com/in-cloud/tech-docs/b-cloud/project/resource" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/in-cloud/blog/rss.xml" title="B-Cloud RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/in-cloud/blog/atom.xml" title="B-Cloud Atom Feed">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" crossorigin="anonymous">
+<script src="/js/observer.js"></script><link rel="stylesheet" href="/in-cloud/assets/css/styles.527d5f8d.css">
+<script src="/in-cloud/assets/js/runtime~main.1b91a670.js" defer="defer"></script>
+<script src="/in-cloud/assets/js/main.a4329545.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"dark")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/in-cloud/"><div class="navbar__logo"><img src="/in-cloud/img/logo.png" alt="" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/in-cloud/img/logo.png" alt="" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">B-Cloud</b></a><a class="navbar__item navbar__link" href="/in-cloud/tech-docs/kubernetes/about">Техническая документация</a><a class="navbar__item navbar__link" href="/in-cloud/blog">Blog</a></div><div class="navbar__items navbar__items--right"><div class="navbarSearchContainer_dCNk"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Ресурс Project</h1></header>
+<p><code>Project</code> — представляет собой введенную абстракцию, созданную для обеспечения команды отдельным пространством имен, предназначенным для управления и развертывания необходимых инфраструктурных ресурсов. Основная цель проекта — предоставить клиенту выделенную область для управления информационными системами, где можно организовать доступ разработчиков и администраторов, гибко контролировать выделенные ресурсы и квоты, отслеживать состояние развернутых систем и интегрироваться с инструментами DevOps для эффективного управления инфраструктурой.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="поля-ресурса">Поля ресурса<a href="#поля-ресурса" class="hash-link" aria-label="Прямая ссылка на Поля ресурса" title="Прямая ссылка на Поля ресурса">​</a></h2>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Описание</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Структура</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Ограничения</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Валидация</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ul><li><code>spec</code>                                      - контент, определяющий проект.</li><li><code>spec.businessName</code>                         - полное бизнес-имя проекта.</li><li><code>spec.description</code>                          - краткое описание проекта.</li><li><code>spec.prefix</code>                               - короткий идентификатор проекта.</li><li><code>spec.quotas</code>                               - квоты на ресурсы проекта, разделенные на лимиты и запросы для CPU, RAM и DISK.</li><li><code>spec.quotas.k8s</code>                           - квоты на ресурсы проекта, разделенные на лимиты и запросы для CPU, RAM и DISK для K8S.</li><li><code>spec.quotas.k8s.limits</code>                    - лимиты для CPU, RAM в проекте.</li><li><code>spec.quotas.k8s.limits.cpu</code>                - лимит по CPU.</li><li><code>spec.quotas.k8s.limits.memory</code>             - лимит по RAM.</li><li><code>spec.quotas.k8s.requests</code>                  - запросы для CPU, RAM в проекте.</li><li><code>spec.quotas.k8s.requests.cpu</code>              - запросы на CPU.</li><li><code>spec.quotas.k8s.requests.memory</code>           - запросы на RAM.</li><li><code>spec.quotas.k8s.requests.storage</code>          - запросы на DISK.</li><li><code>state</code>                                     - тип проекта (DEPRECATED).</li><li><code>status</code>                                    - структура, определяющая текущее состояние проекта.</li><li><code>status.conditions[]</code>                       - массив, содержащий условия текущего состояния проекта.</li><li><code>status.conditions[].lastTransitionTime</code>    - время последнего изменения состояния.</li><li><code>status.conditions[].message</code>               - сообщение с деталями о переходе состояния.</li><li><code>status.conditions[].observedGeneration</code>    - наблюдаемая версия объекта.</li><li><code>status.conditions[].reason</code>                - идентификатор причины перехода состояния.</li><li><code>status.conditions[].status</code>                - итоговое состояние.</li><li><code>status.conditions[].type</code>                  - тип условия.</li><li><code>status.status</code>                             - текущее состояние проекта.</li></ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="scrollable-x"><table><caption>Области применения полей</caption><thead><tr><th rowspan="2">название</th><th rowspan="2">тип данных</th><th rowspan="2">обязательность</th><th rowspan="2">валидация</th></tr></thead><tbody><tr><td>spec</td><td>Object</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.businessName</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.description</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.prefix</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas</td><td>Object</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s</td><td>Object</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.limits</td><td>Object</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.limits.cpu</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.limits.memory</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.requests</td><td>Object</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.requests.cpu</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.requests.memory</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>spec.quotas.k8s.requests.storage</td><td>String</td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>state</td><td><nobr>Enum(&quot;pilot&quot;, &quot;archive&quot;,&quot;commercial&quot;)</nobr></td><td class="green center">✔</td><td class="green center">✔</td></tr><tr><td>status</td><td>Object</td><td></td><td></td></tr><tr><td>status.status</td><td><nobr>Enum(&quot;Available&quot;, &quot;Processing&quot;,&quot;Terminating&quot;,&quot;Error&quot;)</nobr></td><td></td><td></td></tr><tr><td>status.conditions[]</td><td>Object</td><td></td><td></td></tr><tr><td>status.conditions[].lastTransitionTime</td><td>String</td><td></td><td></td></tr><tr><td>status.conditions[].message</td><td>String</td><td></td><td></td></tr><tr><td>status.conditions[].observedGeneration</td><td>String</td><td></td><td></td></tr><tr><td>status.conditions[].reason</td><td>String</td><td></td><td></td></tr><tr><td>status.conditions[].status</td><td><nobr>Enum(&quot;True&quot;, &quot;False&quot;,&quot;Unknown&quot;)</nobr></td><td></td><td></td></tr><tr><td>status.conditions[].type</td><td>String</td><td></td><td></td></tr></tbody></table></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul>
+<li>
+<p><code>spec.prefix</code>:</p>
+<ul>
+<li>Длина значения поля не должна превышать 7 символов.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas.k8s.limits.cpu</code>:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu" target="_blank" rel="noopener noreferrer">документации Kubernetes</a>.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas.k8s.requests.cpu</code>:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu" target="_blank" rel="noopener noreferrer">документации Kubernetes</a>.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas.k8s.limits.memory</code>:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu" target="_blank" rel="noopener noreferrer">документации Kubernetes</a>.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas.k8s.requests.memory</code>:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu" target="_blank" rel="noopener noreferrer">документации Kubernetes</a>.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas.k8s.requests.storage</code>:</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu" target="_blank" rel="noopener noreferrer">документации Kubernetes</a>.</li>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+</ul>
+</li>
+<li>
+<p><code>state</code>:</p>
+<ul>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+<li>Значение поля должно удовлетворять требованиям ENUM.</li>
+</ul>
+</li>
+<li>
+<p><code>status.conditions[].lastTransitionTime</code>:</p>
+<ul>
+<li>Значение поля должно начинаться и заканчиваться символами без пробелов.</li>
+<li>Значение поля должно иметь формат <code>date-time</code>. (<code>2024-11-01T20:07:28Z</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>status.conditions[].message</code>:</p>
+<ul>
+<li>Длина значения поля не должна превышать 32768 символов.</li>
+</ul>
+</li>
+<li>
+<p><code>status.conditions[].reason</code>:</p>
+<ul>
+<li>Длина значения поля не должна превышать 1024 символа.</li>
+<li>Значение поля должно иметь формат записи <code>CamelCase</code> (<code>Available</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>status.conditions[].status</code></p>
+<ul>
+<li>Значение поля должно удовлетворять требованиям ENUM.</li>
+</ul>
+</li>
+<li>
+<p><code>status.conditions[].type</code>:</p>
+<ul>
+<li>Длина значения поля не должна превышать 316 символа.</li>
+<li>Значение поля должно иметь формат записи <code>CamelCase</code> (<code>RoleBindingProcessing</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>status.status</code>:</p>
+<ul>
+<li>Значение поля должно удовлетворять требованиям ENUM.</li>
+<li>Значение поля должно иметь формат записи <code>CamelCase</code> (<code>RoleBindingProcessing</code>).</li>
+</ul>
+</li>
+</ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><ul>
+<li>Валидация создания ресурса<!-- -->
+<ul>
+<li>
+<p><code>metadata.labels</code>:</p>
+<ul>
+<li>Ключи и значения меток должны быть строками.</li>
+<li>Максимальная длина ключей и значений: 63 символа.</li>
+<li>Допускаются только буквы, цифры, дефисы, точки и символ <code>_</code>.</li>
+<li>Не допускается дублирование ключей.</li>
+</ul>
+</li>
+<li>
+<p><code>metadata.name</code>:</p>
+<ul>
+<li>Имя должно быть строкой.</li>
+<li>Максимальная длина имени: 253 символа.</li>
+<li>Допускаются только буквы, цифры (<code>0-9</code>), дефисы (<code>-</code>), и символ <code>_</code>.</li>
+<li>Имя не должно начинаться или заканчиваться дефисом (<code>-</code>) или <code>_</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.businessName</code>:</p>
+<ul>
+<li>Бизнес-имя должно быть строкой.</li>
+<li>Максимальная длина: 255 символов.</li>
+<li>Допускаются буквы, пробелы и базовые знаки пунктуации (точка, запятая, тире).</li>
+</ul>
+</li>
+<li>
+<p><code>spec.prefix</code>:</p>
+<ul>
+<li>Префикс должен быть строкой.</li>
+<li>Максимальная длина: 7 символов.</li>
+<li>Допускаются только буквы и цифры.</li>
+<li>Не должно начинаться или заканчиваться дефисом.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.state</code>:</p>
+<ul>
+<li>Поле принимает ограниченный набор значений (например: <code>active</code>, <code>inactive</code>, <code>pending</code>, <code>archived</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>spec.description</code>:</p>
+<ul>
+<li>Значение до лжно быть строкой.</li>
+<li>Максимальная длина: <strong>255 символов</strong>.</li>
+<li>Поле может быть пустым.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas</code>:</p>
+<ul>
+<li>Квоты должны быть корректно преобразуемыми в &quot;hard limits&quot;.</li>
+<li>Значения квот числовые и неотрицательные.</li>
+<li>Поле должно содержать определенные ресурсы (<code>CPU</code>, <code>Memory</code>, <code>Storage</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas restriction</code>:</p>
+<ul>
+<li>Значения ресурсов в квотах не должны превышать установленные ограничения.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Валидация обновления ресурса<!-- -->
+<ul>
+<li>
+<p><code>metadata.labels</code>:</p>
+<ul>
+<li>Ключи и значения меток должны быть строками.</li>
+<li>Максимальная длина ключей и значений: 63 символа.</li>
+<li>Допускаются только буквы, цифры, дефисы, точки и символ <code>_</code>.</li>
+<li>Не допускается дублирование ключей.</li>
+</ul>
+</li>
+<li>
+<p><code>metadata.name</code>:</p>
+<ul>
+<li>Имя должно быть строкой.</li>
+<li>Максимальная длина имени: 253 символа.</li>
+<li>Допускаются только буквы, цифры (<code>0-9</code>), дефисы (<code>-</code>), и символ <code>_</code>.</li>
+<li>Имя не должно начинаться или заканчиваться дефисом (<code>-</code>) или <code>_</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.businessName</code>:</p>
+<ul>
+<li>Бизнес-имя должно быть строкой.</li>
+<li>Максимальная длина: 255 символов.</li>
+<li>Допускаются бу квы, пробелы и базовые знаки пунктуации (точка, запятая, тире).</li>
+</ul>
+</li>
+<li>
+<p><code>spec.prefix</code>:</p>
+<ul>
+<li>Префикс должен быть строкой.</li>
+<li>Максимальная длина: 7 символов.</li>
+<li>Допускаются только буквы и цифры.</li>
+<li>Не должно начинаться или заканчиваться дефисом.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.state</code>:</p>
+<ul>
+<li>Поле принимает ограниченный набор значений (например: <code>active</code>, <code>inactive</code>, <code>pending</code>, <code>archived</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>spec.description</code>:</p>
+<ul>
+<li>Значение должно быть строкой.</li>
+<li>Максимальная длина: <strong>255 символов</strong>.</li>
+<li>Поле может быть пустым.</li>
+</ul>
+</li>
+<li>
+<p><code>spec.quotas</code>:</p>
+<ul>
+<li>Квоты обновляемого проекта не должны превышать суммы ресурсов всех инстансов проекта.</li>
+<li>Значения квот (<code>CPU</code>, <code>Memory</code>, <code>Storage</code>, и т.д.) должны быть числовыми и допустимыми.</li>
+<li>Некорректные или отрицательные значения запрещены.</li>
+<li>Квоты всех инстансов должны быть суммированы и не должны превышать новые значения квот.</li>
+<li>Ошибки преобразования квот инстансов в &quot;hard limits&quot; недопустимы.</li>
+<li>Проверяется соответствие для каждого ресурса (<code>CPU</code>, <code>Memory</code>, и т.д.).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Валидация удаления ресурса<!-- -->
+<ul>
+<li>Отсутствует</li>
+</ul>
+</li>
+</ul></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="пример-ресурса">Пример ресурса<a href="#пример-ресурса" class="hash-link" aria-label="Прямая ссылка на Пример ресурса" title="Прямая ссылка на Пример ресурса">​</a></h2>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">Спецификация</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Статус</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">---</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">apiVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">cloud.io/v1alpha</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">kind</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Project</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> bcloud</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">sandbox</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">spec</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">businessName</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> B</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cloud</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">description</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Тестовый проект для B</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cloud Sandbox</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">prefix</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> bcsn</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">quotas</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">k8s</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">limits</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">cpu</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">memory</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> 4000M</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">requests</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">cpu</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;1&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">memory</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> 2000M</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">storage</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> 1G</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">state</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> pilot</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Скопировать в буфер обмена" title="Скопировать" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">---</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">apiVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">cloud.io/v1alpha</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">kind</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Project</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> bcloud</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">sandbox</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token important">****</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">conditions</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">lastTransitionTime</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2024-11-02T11:46:25Z&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Reconciliation completed successfully</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">reason</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;True&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> ReconcileStatus</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">lastTransitionTime</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2024-11-02T11:46:23Z&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> handling completed successfully</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">reason</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;True&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> NamespaceProcessing</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">lastTransitionTime</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2024-11-02T11:46:23Z&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> handling completed successfully</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">reason</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;True&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> ProjectLegacyProcessing</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">lastTransitionTime</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2024-11-02T11:46:24Z&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> handling completed successfully</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">reason</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;True&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> ProjectQuotaProcessing</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">lastTransitionTime</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2024-11-02T11:46:25Z&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> handling completed successfully</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">reason</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;True&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> RoleBindingProcessing</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">status</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Available</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Скопировать в буфер обмена" title="Скопировать" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div></div></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Страница документа"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#поля-ресурса" class="table-of-contents__link toc-highlight">Поля ресурса</a></li><li><a href="#пример-ресурса" class="table-of-contents__link toc-highlight">Пример ресурса</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"></div></footer></div>
+<div id="medusa-root"></div>
+<script charset="utf-8" src="/in-cloud/js/header-enabler.js"></script></body>
+</html>

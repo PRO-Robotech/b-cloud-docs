@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[7472],{55513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Kubernetes The Hard Way","permalink":"/in-cloud/blog/kubernetes-the-hard-way","unlisted":false,"date":"2025-03-23T00:00:00.000Z"}]}')}}]);

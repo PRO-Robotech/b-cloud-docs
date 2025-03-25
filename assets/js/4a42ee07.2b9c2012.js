@@ -1,0 +1,7 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[8577],{59161:(e,n,t)=>{t.r(n),t.d(n,{assets:()=>d,contentTitle:()=>a,default:()=>b,frontMatter:()=>u,metadata:()=>s,toc:()=>l});const s=JSON.parse('{"id":"tech-docs/kubernetes/components/kubectl/statusBinVersion","title":"statusBinVersion","description":"{dedent`","source":"@site/docs/tech-docs/kubernetes/components/kubectl/statusBinVersion.mdx","sourceDirName":"tech-docs/kubernetes/components/kubectl","slug":"/tech-docs/kubernetes/components/kubectl/statusBinVersion","permalink":"/in-cloud/tech-docs/kubernetes/components/kubectl/statusBinVersion","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var o=t(74848),i=t(28453),c=t(60513),r=t(1775);const u={},a=void 0,d={},l=[];function m(e){const n={admonition:"admonition",mdxAdmonitionTitle:"mdxAdmonitionTitle",...(0,i.R)(),...e.components};return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(r.A,{language:"bash",children:c.A`
+      kubectl  version
+  `}),"\n",(0,o.jsxs)(n.admonition,{type:"info",children:[(0,o.jsx)(n.mdxAdmonitionTitle,{}),(0,o.jsx)(r.A,{language:"bash",children:c.A`
+      Client Version: v1.30.4
+      Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+      Server Version: v1.30.4
+  `})]})]})}function b(e={}){const{wrapper:n}={...(0,i.R)(),...e.components};return n?(0,o.jsx)(n,{...e,children:(0,o.jsx)(m,{...e})}):m(e)}}}]);

@@ -1,0 +1,23 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[8053],{7478:(e,t,n)=>{n.d(t,{M:()=>a});const a={baseDockerRegistry:{value:"registry.k8s.io"},pausedImage:{value:"pause:3.9"},kubernetesBaseDomain:{value:"example.com"},clusterName:{value:"my-first-cluster"},kubernetesClusterDomain:{value:"cluster.local"},kuberneteBaseFolderPath:{value:"/etc/kubernetes"},kubeadmBaseConfigPath:{value:"/var/run/kubeadm"},kuberneteKubeletFolderPath:{value:"/var/lib/kubelet"},criEndpoint:{value:"/var/run/containerd/containerd.sock"},kubernetesServiceCIDR:{value:"29.64.0.0/16"},kubernetesDNSAddress:{value:"29.64.0.10"},kubernetesDefaultInternalAddress:{value:"29.64.0.1"},virtualMachineLocalAddress:{value:"$(ip -4 addr show scope global | awk '/inet/ {print $2; exit}' | cut -d/ -f1)"},virtualMachineFullName:{value:"${HOST_NAME}.${CLUSTER_NAME}.${BASE_DOMAIN}"},kubernetesClusterExternalDomain:{value:"${CLUSTER_NAME}.${BASE_DOMAIN}"}}},21289:(e,t,n)=>{n.r(t),n.d(t,{assets:()=>l,contentTitle:()=>d,default:()=>b,frontMatter:()=>u,metadata:()=>a,toc:()=>m});const a=JSON.parse('{"id":"tech-docs/kubernetes/certificates/examinationComponent","title":"examinationComponent","description":"\u041f\u043e\u0441\u043b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0432 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u0438\u0445 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0441\u0442\u044c \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e Kubeadm","source":"@site/docs/tech-docs/kubernetes/certificates/examinationComponent.mdx","sourceDirName":"tech-docs/kubernetes/certificates","slug":"/tech-docs/kubernetes/certificates/examinationComponent","permalink":"/in-cloud/tech-docs/kubernetes/certificates/examinationComponent","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var c=n(74848),o=n(28453),r=n(1775),s=n(60513),i=n(7478);const u={},d=void 0,l={},m=[];function k(e){const t={admonition:"admonition",blockquote:"blockquote",code:"code",p:"p",...(0,o.R)(),...e.components};return(0,c.jsxs)(c.Fragment,{children:[(0,c.jsxs)(t.blockquote,{children:["\n",(0,c.jsxs)(t.p,{children:["\u041f\u043e\u0441\u043b\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0432 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u0438\u0445 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0441\u0442\u044c \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e ",(0,c.jsx)(t.code,{children:"Kubeadm"})]}),"\n"]}),"\n",(0,c.jsx)(r.A,{language:"bash",children:s.A`
+  kubeadm certs check-expiration \\
+    --config=${i.M.kubeadmBaseConfigPath.value}/kubeadm.yaml \\
+    --kubeconfig=${i.M.kuberneteBaseFolderPath.value}/super-admin.conf
+`}),"\n",(0,c.jsx)(t.admonition,{type:"warning",children:(0,c.jsx)(r.A,{language:"bash",children:s.A`
+  CERTIFICATE                EXPIRES                  RESIDUAL TIME   CERTIFICATE AUTHORITY   EXTERNALLY MANAGED
+  admin.conf                 Oct 22, 2025 22:06 UTC   364d            ca                      no
+  apiserver                  Oct 22, 2025 22:06 UTC   364d            ca                      no
+  apiserver-etcd-client      Oct 22, 2025 22:06 UTC   364d            etcd-ca                 no
+  apiserver-kubelet-client   Oct 22, 2025 22:06 UTC   364d            ca                      no
+  controller-manager.conf    Oct 22, 2025 22:06 UTC   364d            ca                      no
+  etcd-healthcheck-client    Oct 22, 2025 22:06 UTC   364d            etcd-ca                 no
+  etcd-peer                  Oct 22, 2025 22:06 UTC   364d            etcd-ca                 no
+  etcd-server                Oct 22, 2025 22:06 UTC   364d            etcd-ca                 no
+  front-proxy-client         Oct 22, 2025 22:06 UTC   364d            front-proxy-ca          no
+  scheduler.conf             Oct 22, 2025 22:06 UTC   364d            ca                      no
+  super-admin.conf           Oct 22, 2025 22:06 UTC   364d            ca                      no
+
+  CERTIFICATE AUTHORITY   EXPIRES                  RESIDUAL TIME   EXTERNALLY MANAGED
+  ca                      Oct 20, 2034 22:04 UTC   9y              no
+  etcd-ca                 Oct 20, 2034 22:04 UTC   9y              no
+  front-proxy-ca          Oct 20, 2034 22:04 UTC   9y              no
+`})})]})}function b(e={}){const{wrapper:t}={...(0,o.R)(),...e.components};return t?(0,c.jsx)(t,{...e,children:(0,c.jsx)(k,{...e})}):k(e)}}}]);
