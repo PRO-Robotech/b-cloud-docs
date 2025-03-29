@@ -1,5 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[8937],{50623:(e,t,n)=>{n.r(t),n.d(t,{assets:()=>u,contentTitle:()=>a,default:()=>k,frontMatter:()=>i,metadata:()=>c,toc:()=>p});const c=JSON.parse('{"id":"tech-docs/kubernetes/components/containerd/dir","title":"dir","description":"{dedent`","source":"@site/docs/tech-docs/kubernetes/components/containerd/dir.mdx","sourceDirName":"tech-docs/kubernetes/components/containerd","slug":"/tech-docs/kubernetes/components/containerd/dir","permalink":"/tech-docs/kubernetes/components/containerd/dir","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var r=n(74848),o=n(28453),s=n(60513),d=n(1775);const i={},a=void 0,u={},p=[];function m(e){return(0,r.jsx)(d.A,{language:"bash",children:s.A`
-      mkdir -p /etc/containerd/
-      mkdir -p /etc/containerd/conf.d/
-      mkdir -p /etc/containerd/certs.d/
-  `})}function k(e={}){const{wrapper:t}={...(0,o.R)(),...e.components};return t?(0,r.jsx)(t,{...e,children:(0,r.jsx)(m,{...e})}):m()}}}]);
