@@ -515,42 +515,42 @@
       # tls-sni-cert-key: "${i.w.tlsSniCertKey.value}"
       # vmodule: "${i.w.vmodule.value}"
       # write-config-to: "${i.w.writeConfigTo.value}"
-    `}}},87464:(e,a,t)=>{t.d(a,{A:()=>o});t(96540);var r=t(34164);const l={tabItem:"tabItem_Ymn6"};var u=t(74848);function o(e){let{children:a,hidden:t,className:o}=e;return(0,u.jsx)("div",{role:"tabpanel",className:(0,r.A)(l.tabItem,o),hidden:t,children:a})}},94761:(e,a,t)=>{t.r(a),t.d(a,{assets:()=>k,contentTitle:()=>b,default:()=>$,frontMatter:()=>p,metadata:()=>r,toc:()=>m});const r=JSON.parse('{"id":"tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","title":"uploadConfigsInitComponent","description":"\u0412 \u044d\u0442\u043e\u043c \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0430 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u043f\u043e \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 Kubeadm \u0438 Kubelet \u0432 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0439 \u043a\u043e\u043d\u0442\u0443\u0440 Kubernetes \u0432 \u0432\u0438\u0434\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u0430 ConfigMap. \u042d\u0442\u043e\u0442 \u043f\u043e\u0434\u0445\u043e\u0434 \u0443\u043f\u0440\u043e\u0449\u0430\u0435\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f\u043c\u0438 \u0432 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0443\u0437\u043b\u043e\u0432 Kubernetes, \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0430\u043a \u0440\u0430\u0431\u043e\u0447\u0438\u0435 (worker), \u0442\u0430\u043a \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0435 (master) \u0443\u0437\u043b\u044b.","source":"@site/docs/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent.mdx","sourceDirName":"tech-docs/kubernetes/additionalSetup","slug":"/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","permalink":"/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var l=t(74848),u=t(28453),o=t(87464),i=t(62774),n=t(1775),s=t(60513),c=t(76519),d=t(28702),v=t(7478),h=t(10119);const p={},b=void 0,k={},m=[];function g(e){const a={admonition:"admonition",code:"code",p:"p",...(0,u.R)(),...e.components},{Details:t}=a;return t||function(e,a){throw new Error("Expected "+(a?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Details",!0),(0,l.jsxs)(l.Fragment,{children:[(0,l.jsx)(a.admonition,{type:"warning",children:(0,l.jsxs)(a.p,{children:["\u0412 \u044d\u0442\u043e\u043c \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0430 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u043f\u043e \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 ",(0,l.jsx)(a.code,{children:"Kubeadm"})," \u0438 ",(0,l.jsx)(a.code,{children:"Kubelet"})," \u0432 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0439 \u043a\u043e\u043d\u0442\u0443\u0440 Kubernetes \u0432 \u0432\u0438\u0434\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u0430 ",(0,l.jsx)(a.code,{children:"ConfigMap"}),". \u042d\u0442\u043e\u0442 \u043f\u043e\u0434\u0445\u043e\u0434 \u0443\u043f\u0440\u043e\u0449\u0430\u0435\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f\u043c\u0438 \u0432 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0443\u0437\u043b\u043e\u0432 Kubernetes, \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0430\u043a \u0440\u0430\u0431\u043e\u0447\u0438\u0435 (",(0,l.jsx)(a.code,{children:"worker"}),"), \u0442\u0430\u043a \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0435 (",(0,l.jsx)(a.code,{children:"master"}),") \u0443\u0437\u043b\u044b."]})}),"\n",(0,l.jsxs)(i.A,{groupId:"install-type",children:[(0,l.jsxs)(o.A,{value:"HardWay",children:[(0,l.jsx)("h4",{children:"\u041f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435 \u043e\u043a\u0440\u0443\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u0430"}),(0,l.jsx)(n.A,{language:"bash",children:s.A`
+    `}}},87464:(e,a,t)=>{t.d(a,{A:()=>o});t(96540);var r=t(34164);const l={tabItem:"tabItem_Ymn6"};var u=t(74848);function o(e){let{children:a,hidden:t,className:o}=e;return(0,u.jsx)("div",{role:"tabpanel",className:(0,r.A)(l.tabItem,o),hidden:t,children:a})}},94761:(e,a,t)=>{t.r(a),t.d(a,{assets:()=>k,contentTitle:()=>b,default:()=>$,frontMatter:()=>p,metadata:()=>r,toc:()=>m});const r=JSON.parse('{"id":"tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","title":"uploadConfigsInitComponent","description":"\u0412 \u044d\u0442\u043e\u043c \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0430 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u043f\u043e \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 Kubeadm \u0438 Kubelet \u0432 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0439 \u043a\u043e\u043d\u0442\u0443\u0440 Kubernetes \u0432 \u0432\u0438\u0434\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u0430 ConfigMap. \u042d\u0442\u043e\u0442 \u043f\u043e\u0434\u0445\u043e\u0434 \u0443\u043f\u0440\u043e\u0449\u0430\u0435\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f\u043c\u0438 \u0432 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0443\u0437\u043b\u043e\u0432 Kubernetes, \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0430\u043a \u0440\u0430\u0431\u043e\u0447\u0438\u0435 (worker), \u0442\u0430\u043a \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0435 (master) \u0443\u0437\u043b\u044b.","source":"@site/docs/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent.mdx","sourceDirName":"tech-docs/kubernetes/additionalSetup","slug":"/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","permalink":"/tech-docs/kubernetes/additionalSetup/uploadConfigsInitComponent","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var l=t(74848),u=t(28453),o=t(87464),i=t(62774),n=t(1775),s=t(60513),c=t(76519),d=t(28702),v=t(7478),h=t(10119);const p={},b=void 0,k={},m=[];function g(e){const a={admonition:"admonition",blockquote:"blockquote",code:"code",p:"p",...(0,u.R)(),...e.components},{Details:t}=a;return t||function(e,a){throw new Error("Expected "+(a?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Details",!0),(0,l.jsxs)(l.Fragment,{children:[(0,l.jsx)(a.admonition,{type:"warning",children:(0,l.jsxs)(a.p,{children:["\u0412 \u044d\u0442\u043e\u043c \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0430 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f \u043f\u043e \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 ",(0,l.jsx)(a.code,{children:"Kubeadm"})," \u0438 ",(0,l.jsx)(a.code,{children:"Kubelet"})," \u0432 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0439 \u043a\u043e\u043d\u0442\u0443\u0440 Kubernetes \u0432 \u0432\u0438\u0434\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u0430 ",(0,l.jsx)(a.code,{children:"ConfigMap"}),". \u042d\u0442\u043e\u0442 \u043f\u043e\u0434\u0445\u043e\u0434 \u0443\u043f\u0440\u043e\u0449\u0430\u0435\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f\u043c\u0438 \u0432 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438 \u0443\u0437\u043b\u043e\u0432 Kubernetes, \u043e\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u044f \u043a\u0430\u043a \u0440\u0430\u0431\u043e\u0447\u0438\u0435 (",(0,l.jsx)(a.code,{children:"worker"}),"), \u0442\u0430\u043a \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0438\u0435 (",(0,l.jsx)(a.code,{children:"master"}),") \u0443\u0437\u043b\u044b."]})}),"\n",(0,l.jsxs)(i.A,{groupId:"install-type",children:[(0,l.jsxs)(o.A,{value:"HardWay",children:[(0,l.jsx)("h4",{children:"\u041f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435 \u043e\u043a\u0440\u0443\u0436\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u0430"}),(0,l.jsx)(n.A,{language:"bash",children:s.A`
       export CLUSTER_NAME='${v.M.clusterName.value}'
       export BASE_DOMAIN='${v.M.kubernetesBaseDomain.value}'
       export FULL_HOST_NAME=${v.M.virtualMachineFullName.value}
       export INTERNAL_API=api.${v.M.kubernetesClusterExternalDomain.value}
       export MACHINE_LOCAL_ADDRESS=${v.M.virtualMachineLocalAddress.value}
       export ETCD_INITIAL_CLUSTER="$\{FULL_HOST_NAME}=${h.D.initialAdvertisePeerUrls.value}"
-    `}),(0,l.jsxs)(t,{className:"custom-gray-block",children:[(0,l.jsx)("summary",{children:"kubeadm-config"}),(0,l.jsx)(n.A,{children:s.A`
-      kubectl \\
-        --kubeconfig=${v.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
-        apply -f - <<EOF
-      ---
-      apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: kubeadm-config
-        namespace: kube-system
-      data:
-        ClusterConfiguration: |
-          ${c.Q.data.value}
-      EOF
-    `})]}),(0,l.jsxs)(t,{className:"custom-gray-block",children:[(0,l.jsx)("summary",{children:"kubelet-config"}),(0,l.jsx)(n.A,{children:s.A`
-      kubectl \\
-        --kubeconfig=${v.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
-        apply -f - <<EOF
-      ---
-      apiVersion: v1
-      kind: ConfigMap
-      metadata:
-        name: kubelet-config
-        namespace: kube-system
-      data:
-        kubelet: |
-          ${d.D.data.value}
-      EOF
-    `})]})]}),(0,l.jsxs)(o.A,{value:"Kubeadm",children:[(0,l.jsx)("h4",{children:"\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438"}),(0,l.jsx)(n.A,{language:"bash",children:s.A`
+    `}),(0,l.jsxs)(t,{className:"custom-gray-block",children:[(0,l.jsx)("summary",{children:"kubeadm-config"}),(0,l.jsxs)(a.blockquote,{children:["\n",(0,l.jsxs)(a.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,l.jsx)(a.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,l.jsx)(a.code,{children:"ClusterConfiguration"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,l.jsx)(n.A,{children:s.A`
+        kubectl \\
+          --kubeconfig=${v.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
+          apply -f - <<EOF
+        ---
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: kubeadm-config
+          namespace: kube-system
+        data:
+          ClusterConfiguration: |
+            ${c.Q.data.value}
+        EOF
+      `})]}),(0,l.jsxs)(t,{className:"custom-gray-block",children:[(0,l.jsx)("summary",{children:"kubelet-config"}),(0,l.jsxs)(a.blockquote,{children:["\n",(0,l.jsxs)(a.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,l.jsx)(a.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,l.jsx)(a.code,{children:"kubelet-config"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,l.jsx)(n.A,{children:s.A`
+        kubectl \\
+          --kubeconfig=${v.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
+          apply -f - <<EOF
+        ---
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: kubelet-config
+          namespace: kube-system
+        data:
+          kubelet: |
+            ${d.D.data.value}
+        EOF
+      `})]})]}),(0,l.jsxs)(o.A,{value:"Kubeadm",children:[(0,l.jsx)("h4",{children:"\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438"}),(0,l.jsx)(n.A,{language:"bash",children:s.A`
       kubeadm init phase upload-config all \\
         --config=${v.M.kubeadmBaseConfigPath.value}/kubeadm.yaml \\
         --kubeconfig=${v.M.kubernetesBaseFolderPath.value}/super-admin.conf
