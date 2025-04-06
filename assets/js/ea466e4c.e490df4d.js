@@ -2,7 +2,7 @@
       ls -la ${u.M.kuberneteKubeletFolderPath.value}/config-custom.yaml
   `}),"\n",(0,a.jsx)(o.A,{language:"bash",children:l.A`
       ls -la /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
-  `}),"\n",(0,a.jsxs)(t.admonition,{type:"info",children:[(0,a.jsx)(o.A,{language:"bash",children:l.A`
+  `}),"\n",(0,a.jsxs)(t.admonition,{title:"\u0412\u044b\u0432\u043e\u0434 \u043a\u043e\u043c\u0430\u043d\u0434\u044b",type:"note",children:[(0,a.jsx)(o.A,{language:"bash",children:l.A`
       -rw-r--r-- 1 root root 1721 Feb 19 18:57 /var/lib/kubelet/config.yaml
   `}),(0,a.jsx)(o.A,{language:"bash",children:l.A`
       -rw-r--r-- 1 root root 903 Feb 19 22:10 /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
