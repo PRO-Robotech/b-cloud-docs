@@ -145,12 +145,10 @@
       - --v=${n.L.v.value}
       - --version=${n.L.version.value}
       - --watch-cache=${n.L.watchCache.value}
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
       # - --cloud-provider: "${n.L.cloudProvider.value}"
-
       # Не указывать если значение "" или undefined
       # - --cloud-config=${n.L.cloudConfig.value}
       # - --strict-transport-security-directives=${n.L.strictTransportSecurityDirectives.value}

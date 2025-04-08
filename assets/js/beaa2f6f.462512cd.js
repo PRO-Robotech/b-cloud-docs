@@ -255,8 +255,7 @@
     node/master-<n>.my-first-cluster.example.com modified
   `})})]}),(0,r.jsxs)(o.A,{value:"Kubeadm",children:[(0,r.jsx)(i.A,{language:"bash",children:l.A`
       kubeadm join phase control-plane-join mark-control-plane \\
-        --config=${u.M.kubeadmBaseConfigPath.value}/kubeadm.yaml \\
-        --kubeconfig=${u.M.kubernetesBaseFolderPath.value}/admin.conf
+        --config=${u.M.kubeadmBaseConfigPath.value}/kubeadm.yaml
     `}),(0,r.jsx)(t.admonition,{type:"note",children:(0,r.jsx)(i.A,{language:"bash",children:l.A`
     [mark-control-plane] Marking the node master-<n>.my-first-cluster.example.com as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
     [mark-control-plane] Marking the node master-<n>.my-first-cluster.example.com as control-plane by adding the taints [node-role.kubernetes.io/control-plane:NoSchedule]
@@ -2625,8 +2624,6 @@
             - FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml
             - FileAvailable--etc-kubernetes-manifests-etcd.yaml
         ---
-        apiVersion: kubeadm.k8s.io/v1beta3
-        kind: ClusterConfiguration
         ${h.Q.data.value}
         EOF
       `})]}),(0,r.jsx)(p.A,{value:"Cloud-init",children:(0,r.jsx)(c.A,{children:o.A`
@@ -2700,7 +2697,6 @@
               - name: "k8s-audit"
                 hostPath: "/var/log/kubernetes/audit/"
                 mountPath: "/var/log/kubernetes/audit/"
-                readOnly: false
                 pathType: DirectoryOrCreate
               certSANs:
                 - "127.0.0.1"
@@ -2927,7 +2923,10 @@
   [upload-certs] Using certificate key:
   0c00c2fd5c67c37656c00d78a9d7e1f2eb794ef8e4fc3e2a4b532eb14323cd59
 `})})]})]})]})}function k(e={}){const{wrapper:t}={...(0,a.R)(),...e.components};return t?(0,r.jsx)(t,{...e,children:(0,r.jsx)(b,{...e})}):b(e)}},76039:(e,t,n)=>{n.r(t),n.d(t,{assets:()=>i,contentTitle:()=>c,default:()=>d,frontMatter:()=>o,metadata:()=>s,toc:()=>l});const s=JSON.parse('{"id":"tech-docs/kubernetes/certificates/components/kubelet/kubeletServer/checks/statusKubeadm","title":"statusKubeadm","description":"\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0433\u043e\u0442\u043e\u0432\u043d\u043e\u0441\u0442\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u0430","source":"@site/docs/tech-docs/kubernetes/certificates/components/kubelet/kubeletServer/checks/statusKubeadm.mdx","sourceDirName":"tech-docs/kubernetes/certificates/components/kubelet/kubeletServer/checks","slug":"/tech-docs/kubernetes/certificates/components/kubelet/kubeletServer/checks/statusKubeadm","permalink":"/tech-docs/kubernetes/certificates/components/kubelet/kubeletServer/checks/statusKubeadm","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var r=n(74848),a=n(28453);const o={},c=void 0,i={},l=[];function u(e){const t={admonition:"admonition",code:"code",p:"p",...(0,a.R)(),...e.components},{Details:n}=t;return n||function(e,t){throw new Error("Expected "+(t?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Details",!0),(0,r.jsxs)(n,{open:!0,className:"custom-blue-block",children:[(0,r.jsx)("summary",{children:"\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0433\u043e\u0442\u043e\u0432\u043d\u043e\u0441\u0442\u0438 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u0430"}),(0,r.jsx)(t.admonition,{title:"\u041e\u0431\u0440\u0430\u0442\u0438\u0442\u0435 \u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!",type:"warning",children:(0,r.jsxs)(t.p,{children:["kubeadm \u043d\u0435 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442 \u0441\u0442\u0430\u0442\u0443\u0441 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u0430, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u043c\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u043e\u043c ",(0,r.jsx)(t.code,{children:"kubelet"}),"."]})})]})}function d(e={}){const{wrapper:t}={...(0,a.R)(),...e.components};return t?(0,r.jsx)(t,{...e,children:(0,r.jsx)(u,{...e})}):u(e)}},76519:(e,t,n)=>{n.d(t,{Q:()=>i});var s=n(60513),r=n(25292),a=n(63770),o=n(86613),c=n(7478);const i={data:{value:s.A`
+      apiVersion: kubeadm.k8s.io/v1beta3
+      kind: ClusterConfiguration
       clusterName: "$\{CLUSTER_NAME}"
+      certificatesDir: ${c.M.kubernetesBaseFolderPath.value}/pki
       controlPlaneEndpoint: $\{INTERNAL_API}:${r.L.securePort.value}
       imageRepository: "${c.M.baseDockerRegistry.value}"
       networking:
@@ -3309,12 +3308,10 @@
       - --v=${i.L.v.value}
       - --version=${i.L.version.value}
       - --watch-cache=${i.L.watchCache.value}
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
       # - --cloud-provider: "${i.L.cloudProvider.value}"
-
       # Не указывать если значение "" или undefined
       # - --cloud-config=${i.L.cloudConfig.value}
       # - --strict-transport-security-directives=${i.L.strictTransportSecurityDirectives.value}
@@ -3471,8 +3468,7 @@
   node/master-1.my-first-cluster.example.com modified
 `})})]}),(0,r.jsxs)(o.A,{value:"Kubeadm",children:[(0,r.jsx)(i.A,{language:"bash",children:l.A`
       kubeadm init phase mark-control-plane \\
-        --config=${u.M.kubeadmBaseConfigPath.value}/kubeadm.yaml \\
-        --kubeconfig=${u.M.kubernetesBaseFolderPath.value}/super-admin.conf
+        --config=${u.M.kubeadmBaseConfigPath.value}/kubeadm.yaml
     `}),(0,r.jsx)(t.admonition,{type:"note",children:(0,r.jsx)(i.A,{language:"bash",children:l.A`
   [mark-control-plane] Marking the node master-1.my-first-cluster.example.com as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
   [mark-control-plane] Marking the node master-1.my-first-cluster.example.com as control-plane by adding the taints [node-role.kubernetes.io/control-plane:NoSchedule]
@@ -3709,12 +3705,10 @@
       - --v=${l.L.v.value}
       - --version=${l.L.version.value}
       - --volume-host-allow-local-loopback=${l.L.volumeHostAllowLocalLoopback.value}
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
       # - --cloud-provider: "${l.L.cloudProvider.value}"
-
       # Не указывать если значение "" или undefined
       # - --cluster-signing-kube-apiserver-client-cert-file=${l.L.clusterSigningKubeApiserverClientCertFile.value}
       # - --cluster-signing-kube-apiserver-client-key-file=${l.L.clusterSigningKubeApiserverClientKeyFile.value}
@@ -4021,7 +4015,6 @@
       v: "${a.L.v.value}"
       version: "${a.L.version.value}"
       watch-cache: "${a.L.watchCache.value}"
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
@@ -4189,7 +4182,6 @@
       v: "${o.L.v.value}"
       version: "${o.L.version.value}"
       volume-host-allow-local-loopback: "${o.L.volumeHostAllowLocalLoopback.value}"
-
       # Не указывать если значение "" или undefined
       # cluster-signing-kube-apiserver-client-cert-file: "${o.L.clusterSigningKubeApiserverClientCertFile.value}"
       # cluster-signing-kube-apiserver-client-key-file: "${o.L.clusterSigningKubeApiserverClientKeyFile.value}"
@@ -4261,7 +4253,6 @@
       secure-port: "${c.w.securePort.value}"
       v: "${c.w.v.value}"
       version: "${c.w.version.value}"
-
       # allow-metric-labels: "${c.w.allowMetricLabels.value}"
       # allow-metric-labels-manifest: "${c.w.allowMetricLabelsManifest.value}"
       # cert-dir: "${c.w.certDir.value}"
@@ -4523,8 +4514,8 @@
             [plugins."io.containerd.grpc.v1.cri".registry]
               config_path = "/etc/containerd/certs.d/"
     `})]})]})}function k(e={}){const{wrapper:t}={...(0,a.R)(),...e.components};return t?(0,r.jsx)(t,{...e,children:(0,r.jsx)(b,{...e})}):b()}},92279:(e,t,n)=>{n.r(t),n.d(t,{assets:()=>p,contentTitle:()=>m,default:()=>f,frontMatter:()=>h,metadata:()=>s,toc:()=>b});const s=JSON.parse('{"id":"tech-docs/kubernetes/additionalSetup/rbacComponent","title":"rbacComponent","description":"Role bindings","source":"@site/docs/tech-docs/kubernetes/additionalSetup/rbacComponent.mdx","sourceDirName":"tech-docs/kubernetes/additionalSetup","slug":"/tech-docs/kubernetes/additionalSetup/rbacComponent","permalink":"/tech-docs/kubernetes/additionalSetup/rbacComponent","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var r=n(74848),a=n(28453),o=n(87464),c=n(62774),i=n(1775),l=n(60513),u=n(7478),d=n(25292);const h={},m=void 0,p={},b=[];function k(e){const t={admonition:"admonition",blockquote:"blockquote",li:"li",p:"p",ul:"ul",...(0,a.R)(),...e.components},{Details:n}=t;return n||function(e,t){throw new Error("Expected "+(t?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}("Details",!0),(0,r.jsxs)(c.A,{groupId:"install-type",children:[(0,r.jsxs)(o.A,{value:"HardWay",children:[(0,r.jsxs)(n,{className:"custom-gray-block",children:[(0,r.jsx)("summary",{children:"Role bindings"}),(0,r.jsx)("h4",{children:"\u041f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0435 \u043e\u043a\u0440\u0443\u0436\u0435\u043d\u0438\u044f"}),(0,r.jsx)(i.A,{language:"bash",children:l.A`
-          export AUTH_EXTRA_GROUPS="system:bootstrappers:kubeadm:default-node-token"
-      `}),(0,r.jsx)("h4",{children:"\u0420\u043e\u043b\u0438 \u0438 \u0441\u0432\u044f\u0437\u0438"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsx)(t.p,{children:"\u042d\u0442\u043e\u0442 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b kubeadm \u043c\u043e\u0433 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c, \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0430 \u043b\u0438 \u043d\u043e\u0434\u0430 \u0441 \u0442\u0430\u043a\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0432 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0435 \u0438\u043b\u0438 \u043d\u0435\u0442."}),"\n"]}),(0,r.jsx)(i.A,{language:"bash",children:l.A`
+      export AUTH_EXTRA_GROUPS="system:bootstrappers:kubeadm:default-node-token"
+    `}),(0,r.jsx)("h4",{children:"\u0420\u043e\u043b\u0438 \u0438 \u0441\u0432\u044f\u0437\u0438"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsx)(t.p,{children:"\u042d\u0442\u043e\u0442 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b kubeadm \u043c\u043e\u0433 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c, \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0430 \u043b\u0438 \u043d\u043e\u0434\u0430 \u0441 \u0442\u0430\u043a\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0432 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0435 \u0438\u043b\u0438 \u043d\u0435\u0442."}),"\n"]}),(0,r.jsx)(i.A,{language:"bash",children:l.A`
       kubectl \\
         --kubeconfig=${u.M.kubernetesBaseFolderPath.value}/super-admin.conf apply -f - <<EOF
       ---
@@ -4748,7 +4739,45 @@
       export INTERNAL_API=api.${h.M.kubernetesClusterExternalDomain.value}
       export MACHINE_LOCAL_ADDRESS=${h.M.virtualMachineLocalAddress.value}
       export ETCD_INITIAL_CLUSTER="$\{FULL_HOST_NAME}=${m.D.initialAdvertisePeerUrls.value}"
-    `}),(0,r.jsxs)(n,{className:"custom-gray-block",children:[(0,r.jsx)("summary",{children:"kubeadm-config"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,r.jsx)(t.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,r.jsx)(t.code,{children:"ClusterConfiguration"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
+      export AUTH_EXTRA_GROUPS="system:bootstrappers:kubeadm:default-node-token"
+    `}),(0,r.jsxs)(n,{className:"custom-gray-block",children:[(0,r.jsx)("summary",{children:"kubeadm-config"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u043d\u043e\u0434\u0430\u043c \u0447\u0438\u0442\u0430\u0442\u044c ConfigMap ",(0,r.jsx)(t.code,{children:"kubeadm-config"})," \u0432 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0435 \u0438\u043c\u0451\u043d ",(0,r.jsx)(t.code,{children:"kube-system"}),":"]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
+        kubectl \\
+          --kubeconfig=${h.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
+          apply -f - <<EOF
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: Role
+        metadata:
+          name: kubeadm:nodes-kubeadm-config
+          namespace: kube-system
+        rules:
+        - apiGroups:
+          - ""
+          resourceNames:
+          - kubeadm-config
+          resources:
+          - configmaps
+          verbs:
+          - get
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: RoleBinding
+        metadata:
+          name: kubeadm:nodes-kubeadm-config
+          namespace: kube-system
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: Role
+          name: kubeadm:nodes-kubeadm-config
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: $\{AUTH_EXTRA_GROUPS}
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: system:nodes
+        EOF
+      `}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,r.jsx)(t.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,r.jsx)(t.code,{children:"ClusterConfiguration"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
         kubectl \\
           --kubeconfig=${h.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
           apply -f - <<EOF
@@ -4762,7 +4791,44 @@
           ClusterConfiguration: |
             ${u.Q.data.value}
         EOF
-      `})]}),(0,r.jsxs)(n,{className:"custom-gray-block",children:[(0,r.jsx)("summary",{children:"kubelet-config"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,r.jsx)(t.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,r.jsx)(t.code,{children:"kubelet-config"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
+      `})]}),(0,r.jsxs)(n,{className:"custom-gray-block",children:[(0,r.jsx)("summary",{children:"kubelet-config"}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u043d\u043e\u0434\u0430\u043c \u0447\u0438\u0442\u0430\u0442\u044c ConfigMap ",(0,r.jsx)(t.code,{children:"kubelet-config"})," \u0432 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0435 \u0438\u043c\u0451\u043d ",(0,r.jsx)(t.code,{children:"kube-system"}),":"]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
+        kubectl \\
+          --kubeconfig=${h.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
+          apply -f - <<EOF
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: Role
+        metadata:
+          name: kubeadm:kubelet-config
+          namespace: kube-system
+        rules:
+        - apiGroups:
+          - ""
+          resourceNames:
+          - kubelet-config
+          resources:
+          - configmaps
+          verbs:
+          - get
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: RoleBinding
+        metadata:
+          name: kubeadm:kubelet-config
+          namespace: kube-system
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: Role
+          name: kubeadm:kubelet-config
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: system:nodes
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: $\{AUTH_EXTRA_GROUPS}
+        EOF
+      `}),(0,r.jsxs)(t.blockquote,{children:["\n",(0,r.jsxs)(t.p,{children:["\u0414\u0430\u043d\u043d\u044b\u0439 \u0431\u043b\u043e\u043a \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0438 ",(0,r.jsx)(t.code,{children:"kubeadm join"})," \u0443\u0437\u0435\u043b \u043f\u043e\u043b\u0443\u0447\u0438\u043b \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 ",(0,r.jsx)(t.code,{children:"kubelet-config"})," \u043e\u0442 \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0449\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u0430 \u0438 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u0443\u0437\u0435\u043b \u043a control-plane."]}),"\n"]}),(0,r.jsx)(i.A,{children:l.A`
         kubectl \\
           --kubeconfig=${h.M.kubernetesBaseFolderPath.value}/super-admin.conf \\
           apply -f - <<EOF

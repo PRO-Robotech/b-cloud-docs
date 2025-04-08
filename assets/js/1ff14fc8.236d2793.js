@@ -15,8 +15,7 @@
     node/master-<n>.my-first-cluster.example.com modified
   `})})]}),(0,r.jsxs)(o.A,{value:"Kubeadm",children:[(0,r.jsx)(u.A,{language:"bash",children:i.A`
       kubeadm join phase control-plane-join mark-control-plane \\
-        --config=${c.M.kubeadmBaseConfigPath.value}/kubeadm.yaml \\
-        --kubeconfig=${c.M.kubernetesBaseFolderPath.value}/admin.conf
+        --config=${c.M.kubeadmBaseConfigPath.value}/kubeadm.yaml
     `}),(0,r.jsx)(t.admonition,{type:"note",children:(0,r.jsx)(u.A,{language:"bash",children:i.A`
     [mark-control-plane] Marking the node master-<n>.my-first-cluster.example.com as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
     [mark-control-plane] Marking the node master-<n>.my-first-cluster.example.com as control-plane by adding the taints [node-role.kubernetes.io/control-plane:NoSchedule]

@@ -37,8 +37,6 @@
             - FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml
             - FileAvailable--etc-kubernetes-manifests-etcd.yaml
         ---
-        apiVersion: kubeadm.k8s.io/v1beta3
-        kind: ClusterConfiguration
         ${d.Q.data.value}
         EOF
       `})]}),(0,l.jsx)(p.A,{value:"Cloud-init",children:(0,l.jsx)(i.A,{children:o.A`
@@ -112,7 +110,6 @@
               - name: "k8s-audit"
                 hostPath: "/var/log/kubernetes/audit/"
                 mountPath: "/var/log/kubernetes/audit/"
-                readOnly: false
                 pathType: DirectoryOrCreate
               certSANs:
                 - "127.0.0.1"
@@ -127,7 +124,10 @@
               extraArgs:
                 ${h.hZ.data.value}
       `})})]})]})}function L(e={}){const{wrapper:a}={...(0,u.R)(),...e.components};return a?(0,l.jsx)(a,{...e,children:(0,l.jsx)(f,{...e})}):f(e)}},76519:(e,a,t)=>{t.d(a,{Q:()=>n});var r=t(60513),l=t(25292),u=t(63770),o=t(86613),i=t(7478);const n={data:{value:r.A`
+      apiVersion: kubeadm.k8s.io/v1beta3
+      kind: ClusterConfiguration
       clusterName: "$\{CLUSTER_NAME}"
+      certificatesDir: ${i.M.kubernetesBaseFolderPath.value}/pki
       controlPlaneEndpoint: $\{INTERNAL_API}:${l.L.securePort.value}
       imageRepository: "${i.M.baseDockerRegistry.value}"
       networking:
@@ -318,7 +318,6 @@
       v: "${u.L.v.value}"
       version: "${u.L.version.value}"
       watch-cache: "${u.L.watchCache.value}"
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
@@ -486,7 +485,6 @@
       v: "${o.L.v.value}"
       version: "${o.L.version.value}"
       volume-host-allow-local-loopback: "${o.L.volumeHostAllowLocalLoopback.value}"
-
       # Не указывать если значение "" или undefined
       # cluster-signing-kube-apiserver-client-cert-file: "${o.L.clusterSigningKubeApiserverClientCertFile.value}"
       # cluster-signing-kube-apiserver-client-key-file: "${o.L.clusterSigningKubeApiserverClientKeyFile.value}"
@@ -558,7 +556,6 @@
       secure-port: "${i.w.securePort.value}"
       v: "${i.w.v.value}"
       version: "${i.w.version.value}"
-
       # allow-metric-labels: "${i.w.allowMetricLabels.value}"
       # allow-metric-labels-manifest: "${i.w.allowMetricLabelsManifest.value}"
       # cert-dir: "${i.w.certDir.value}"

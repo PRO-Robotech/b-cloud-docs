@@ -37,8 +37,6 @@
             - FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml
             - FileAvailable--etc-kubernetes-manifests-etcd.yaml
         ---
-        apiVersion: kubeadm.k8s.io/v1beta3
-        kind: ClusterConfiguration
         ${v.Q.data.value}
         EOF
       `})]}),(0,l.jsx)(p.A,{value:"Cloud-init",children:(0,l.jsx)(n.A,{children:u.A`
@@ -112,7 +110,6 @@
               - name: "k8s-audit"
                 hostPath: "/var/log/kubernetes/audit/"
                 mountPath: "/var/log/kubernetes/audit/"
-                readOnly: false
                 pathType: DirectoryOrCreate
               certSANs:
                 - "127.0.0.1"
@@ -133,7 +130,10 @@
       `})})]})}function b(e={}){const{wrapper:a}={...(0,o.R)(),...e.components};return a?(0,l.jsx)(a,{...e,children:(0,l.jsx)(p,{...e})}):p()}},75478:(e,a,t)=>{t.r(a),t.d(a,{assets:()=>v,contentTitle:()=>d,default:()=>b,frontMatter:()=>c,metadata:()=>r,toc:()=>h});const r=JSON.parse('{"id":"tech-docs/kubernetes/setupEnvironments/initMaster","title":"initMaster","description":"{dedent`","source":"@site/docs/tech-docs/kubernetes/setupEnvironments/initMaster.mdx","sourceDirName":"tech-docs/kubernetes/setupEnvironments","slug":"/tech-docs/kubernetes/setupEnvironments/initMaster","permalink":"/tech-docs/kubernetes/setupEnvironments/initMaster","draft":false,"unlisted":false,"tags":[],"version":"current","frontMatter":{}}');var l=t(74848),o=t(28453),u=t(87464),n=t(62774),i=t(60513),s=t(1775);const c={},d=void 0,v={},h=[];function p(e){return(0,l.jsx)(n.A,{children:(0,l.jsx)(u.A,{value:"master-1",children:(0,l.jsx)(s.A,{language:"bash",children:i.A`
         export HOST_NAME=master-1
       `})})})}function b(e={}){const{wrapper:a}={...(0,o.R)(),...e.components};return a?(0,l.jsx)(a,{...e,children:(0,l.jsx)(p,{...e})}):p()}},76519:(e,a,t)=>{t.d(a,{Q:()=>i});var r=t(60513),l=t(25292),o=t(63770),u=t(86613),n=t(7478);const i={data:{value:r.A`
+      apiVersion: kubeadm.k8s.io/v1beta3
+      kind: ClusterConfiguration
       clusterName: "$\{CLUSTER_NAME}"
+      certificatesDir: ${n.M.kubernetesBaseFolderPath.value}/pki
       controlPlaneEndpoint: $\{INTERNAL_API}:${l.L.securePort.value}
       imageRepository: "${n.M.baseDockerRegistry.value}"
       networking:
@@ -324,7 +324,6 @@
       v: "${o.L.v.value}"
       version: "${o.L.version.value}"
       watch-cache: "${o.L.watchCache.value}"
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
@@ -492,7 +491,6 @@
       v: "${u.L.v.value}"
       version: "${u.L.version.value}"
       volume-host-allow-local-loopback: "${u.L.volumeHostAllowLocalLoopback.value}"
-
       # Не указывать если значение "" или undefined
       # cluster-signing-kube-apiserver-client-cert-file: "${u.L.clusterSigningKubeApiserverClientCertFile.value}"
       # cluster-signing-kube-apiserver-client-key-file: "${u.L.clusterSigningKubeApiserverClientKeyFile.value}"
@@ -564,7 +562,6 @@
       secure-port: "${n.w.securePort.value}"
       v: "${n.w.v.value}"
       version: "${n.w.version.value}"
-
       # allow-metric-labels: "${n.w.allowMetricLabels.value}"
       # allow-metric-labels-manifest: "${n.w.allowMetricLabelsManifest.value}"
       # cert-dir: "${n.w.certDir.value}"

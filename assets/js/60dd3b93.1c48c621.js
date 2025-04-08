@@ -139,12 +139,10 @@
       - --v=${c.L.v.value}
       - --version=${c.L.version.value}
       - --volume-host-allow-local-loopback=${c.L.volumeHostAllowLocalLoopback.value}
-
       # ЕСЛИ НУЖНО ПОДКЛЮЧИТЬ CLOUD-CONTROLLER-MANAGER
       # ТРЕБУЕТСЯ РАСКОМЕНТИРОВАТЬ
       # ->
       # - --cloud-provider: "${c.L.cloudProvider.value}"
-
       # Не указывать если значение "" или undefined
       # - --cluster-signing-kube-apiserver-client-cert-file=${c.L.clusterSigningKubeApiserverClientCertFile.value}
       # - --cluster-signing-kube-apiserver-client-key-file=${c.L.clusterSigningKubeApiserverClientKeyFile.value}
