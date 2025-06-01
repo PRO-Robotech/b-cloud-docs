@@ -1,26 +1,47 @@
-import React, { useState } from 'react';
-import { default as MonacoEditor } from '@monaco-editor/react'; // Ensure correct import
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { default as MonacoEditor } from '@monaco-editor/react';
 
 interface YamlModalProps {
   yamlContent: string;
-  onCloseOtherModals?: () => void; // Callback to close other modals
+  onCloseOtherModals?: () => void;
 }
 
 const YamlModal: React.FC<YamlModalProps> = ({ yamlContent, onCloseOtherModals }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const [editorHeight, setEditorHeight] = useState<string>('300px');
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const lineCount = useMemo(() => yamlContent.split('\n').length, [yamlContent]);
+
+  useEffect(() => {
+    const minHeight = 200;
+    const maxHeight = window.innerHeight * 0.8;
+    const approxHeight = lineCount * 20;
+    const finalHeight = Math.min(Math.max(approxHeight, minHeight), maxHeight);
+    setEditorHeight(`${finalHeight}px`);
+  }, [lineCount]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   const handleOpen = () => {
-    if (onCloseOtherModals) {
-      onCloseOtherModals(); // Close other modals before opening this one
-    }
+    onCloseOtherModals?.();
     setIsOpen(true);
+    setTimeout(() => dialogRef.current?.focus(), 0);
   };
 
-  const handleCopyToClipboard = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(yamlContent).then(() => {
       setShowNotification(true);
-      setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
+      setTimeout(() => setShowNotification(false), 2000);
     });
   };
 
@@ -42,6 +63,7 @@ const YamlModal: React.FC<YamlModalProps> = ({ yamlContent, onCloseOtherModals }
       >
         Открыть пример
       </button>
+
       {isOpen && (
         <div
           style={{
@@ -58,43 +80,41 @@ const YamlModal: React.FC<YamlModalProps> = ({ yamlContent, onCloseOtherModals }
           }}
         >
           <dialog
+            ref={dialogRef}
             open
             style={{
               border: 'none',
-              padding: '0',
               background: '#1e1e1e',
               borderRadius: '8px',
-              maxWidth: '960px',
               width: '90vw',
-              height: 'auto',
+              maxWidth: '960px',
               maxHeight: '90vh',
-              overflow: 'hidden',
+              overflow: 'auto',
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ padding: '1rem', fontWeight: 'bold', color: '#ccc' }}>
                 Пример политики
               </div>
-              <div style={{ flex: 1, overflow: 'auto' }}>
+              <div style={{ padding: '0 1rem 1rem', overflow: 'auto' }}>
                 <MonacoEditor
-                  height="300px" // Set a fixed height for the editor
+                  height={editorHeight}
                   defaultLanguage="yaml"
                   defaultValue={yamlContent}
-                  theme="vs-dark" // Explicitly set the theme here
+                  theme="vs-dark"
                   options={{
-                    readOnly: true, // Allow editing and copying
+                    readOnly: true,
                     minimap: { enabled: false },
                     scrollBeyondLastLine: false,
-                    fontFamily: '"Fira Code", "Courier New", monospace', // Set a font suitable for code
-                    fontSize: 16, // Adjust font size for better readability
+                    fontFamily: '"Fira Code", "Courier New", monospace',
+                    fontSize: 16,
                   }}
                 />
               </div>
-              <form method="dialog" style={{ textAlign: 'right', padding: '0.5rem 1rem' }}>
+              <div style={{ textAlign: 'right', padding: '0.5rem 1rem' }}>
                 <button
-                  type="button"
-                  onClick={handleCopyToClipboard}
+                  onClick={handleCopy}
                   style={{
                     marginRight: '0.5rem',
                     padding: '0.4rem 0.8rem',
@@ -117,15 +137,17 @@ const YamlModal: React.FC<YamlModalProps> = ({ yamlContent, onCloseOtherModals }
                     border: 'none',
                     borderRadius: '4px',
                     fontSize: '0.85rem',
+                    cursor: 'pointer',
                   }}
                 >
                   Закрыть
                 </button>
-              </form>
+              </div>
             </div>
           </dialog>
         </div>
       )}
+
       {showNotification && (
         <div
           style={{

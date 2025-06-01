@@ -16,9 +16,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import dedent from 'ts-dedent';
-import React from 'react';
 import YamlModal from '../src/components/YamlModal/YamlModal';
-
 
 ### Аудит (Audit)
 
@@ -36,9 +34,9 @@ Kubernetes использует систему аудита для журнал�
 
 Сами события можно направить в файл, на удалённый webhook, в лог-файл `kube-apiserver` или в систему логирования.
 
-#### Настройка политики
+### Настройка политики
 
-Политика аудита — это YAML-файл, описывающий набор правил, определяющих какие события нужно логировать и с какой степенью детализации. Каждое правило состоит из условий (фильтров) и уровня логирования `level`, который задаёт объём сохраняемой информации.
+Политика аудита — это YAML-файл, описывающий набор правил, определяющих, какие события нужно логировать и с какой степенью детализации. Каждое правило состоит из условий (фильтров) и уровня логирования `level`, который задаёт объём сохраняемой информации.
 
 API-сервер обрабатывает список правил сверху вниз и применяет первое подходящее. Если ни одно правило не сработает, применяется поведение по умолчанию или пропуск события.
 
@@ -153,7 +151,7 @@ API-сервер обрабатывает список правил сверху
 
 Ниже представлен план по написанию эффективных и безопасных политик аудита Kubernetes.
 
-<table style={{ tableLayout: "fixed", width: "100%" }}>
+<table>
   <thead>
     <tr>
       <th style={{ width: "38%" }}>Рекомендация</th>
@@ -168,15 +166,11 @@ API-сервер обрабатывает список правил сверху
       <td>
         <YamlModal
           yamlContent={dedent`
-            - level: None
-              users: ["system:kube-proxy", "system:unsecured"]
-              verbs: ["get", "watch"]
-              resources:
-                - group: ""
-                  resources: ["events", "services", "endpoints"]
-
-            - level: None
-              nonResourceURLs: ["/healthz*", "/version", "/metrics"]
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: None
           `}
         />
       </td>
@@ -187,12 +181,15 @@ API-сервер обрабатывает список правил сверху
       <td>
         <YamlModal
           yamlContent={dedent`
-            - level: Metadata
-              users: ["system:serviceaccount:kube-system:default"]
-              verbs: ["create", "delete"]
-              resources:
-                - group: ""
-                  resources: ["pods"]
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: None
+                users:
+                  - "system:serviceaccount:default:my-app"
+                userGroups:
+                  - "system:authenticated"
           `}
         />
       </td>
@@ -203,12 +200,14 @@ API-сервер обрабатывает список правил сверху
       <td>
         <YamlModal
           yamlContent={dedent`
-            - level: Metadata
-              resources:
-                - group: ""
-                  resources: ["secrets", "configmaps"]
-                - group: authentication.k8s.io
-                  resources: ["tokenreviews"]
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+              - level: Metadata
+                resources:
+                  - group: ""
+                    resources: ["secrets", "serviceaccounts/token"]
           `}
         />
       </td>
@@ -222,9 +221,11 @@ API-сервер обрабатывает список правил сверху
             - level: RequestResponse
               resources:
                 - group: "admissionregistration.k8s.io"
-                  resources: ["mutatingwebhookconfigurations", "validatingwebhookconfigurations"]
+                  resources: ["validatingwebhookconfigurations", "mutatingwebhookconfigurations"]
                 - group: "apiextensions.k8s.io"
                   resources: ["customresourcedefinitions"]
+                - group: "apiregistration.k8s.io"
+                  resources: ["apiservices"]
           `}
         />
       </td>
@@ -236,10 +237,10 @@ API-сервер обрабатывает список правил сверху
         <YamlModal
           yamlContent={dedent`
             - level: Metadata
-              namespaces: ["kube-system", "prod"]
+              namespaces: ["kube-system"]
               resources:
                 - group: ""
-                  resources: ["pods", "configmaps"]
+                  resources: ["pods", "configmaps", "secrets", "serviceaccounts"]
           `}
         />
       </td>
@@ -247,212 +248,507 @@ API-сервер обрабатывает список правил сверху
   </tbody>
 </table>
 
-<Tabs
-  groupId="audit-policy-examples"
-  defaultValue="minimal"
-  values={[
-    {label: 'Минимальный аудит', value: 'minimal'},
-    {label: 'Аудит только create/delete', value: 'create-delete'},
-    {label: 'Полный аудит всех запросов', value: 'full'}
-  ]}>
+### Базовые политики
 
-  <TabItem value="minimal">
-    <p>
-      Минимальная политика, которая фиксирует только метаданные по запросам к объектам Pods. Подходит для систем с минимальными требованиями к аудиту.
-    </p>
-    <CodeBlock language="yaml">
-      {dedent`
-        apiVersion: audit.k8s.io/v1
-        kind: Policy
-        rules:
-          - level: Metadata
-            resources:
-              - group: ""
-                resources: ["pods"]
-      `}
-    </CodeBlock>
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "76%" }}>Описание</th>
+      <th style={{ width: "24%" }}>Пример</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Подавление шума от kube-apiserver</strong></td>
+      <td>
+        <YamlModal
+          yamlContent={dedent`
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
 
-    <p>
-      Пример исходного запроса от клиента:
-    </p>
-    <CodeBlock language="bash">
-      {dedent`
-        curl -k \\
-          --header "Authorization: Bearer $TOKEN" \\
-          https://127.0.0.1:6443/api/v1/namespaces/default/pods
-      `}
-    </CodeBlock>
+              # 1. Сайлентим GET на /readyz от kube-apiserver
+              - level: None
+                verbs: ["get"]
+                users:
+                  - "system:apiserver"
+                nonResourceURLs:
+                  - "/readyz"
 
-    <p>
-      Пример события аудита, которое будет записано при использовании уровня <code>Metadata</code>:
-    </p>
-    <CodeBlock language="json">
-      {dedent`
-        {
-          "kind": "Event",
-          "apiVersion": "audit.k8s.io/v1",
-          "level": "Metadata",
-          "auditID": "123e4567-e89b-12d3-a456-426614174000",
-          "stage": "ResponseComplete",
-          "requestURI": "/api/v1/namespaces/default/pods",
-          "verb": "get",
-          "user": {
-            "username": "system:serviceaccount:default:my-app"
-          },
-          "sourceIPs": ["10.0.0.15"],
-          "objectRef": {
-            "resource": "pods",
-            "namespace": "default"
-          },
-          "responseStatus": {
-            "code": 200
-          },
-          "requestReceivedTimestamp": "2025-05-03T10:15:00Z",
-          "stageTimestamp": "2025-05-03T10:15:00Z"
-        }
-      `}
-    </CodeBlock>
-  </TabItem>
+              # 2. Сайлентим все LIST и WATCH запросы kube-apiserver к ключевым API-группам и ресурсам
+              - level: None
+                verbs: ["list", "watch"]
+                users:
+                  - "system:apiserver"
+                resources:
+                  - group: "storage.k8s.io"
+                    resources:
+                      - "volumeattachments"
+                      - "storageclasses"
 
-  <TabItem value="create-delete">
-    <p>
-      Аудит ограничен действиями <code>create</code> над Pods, что позволяет отслеживать только события изменения состояния кластера.
-    </p>
-    <CodeBlock language="yaml">
-      {dedent`
-        apiVersion: audit.k8s.io/v1
-        kind: Policy
-        rules:
-          - level: Request
-            verbs: ["create"]
-            resources:
-              - group: ""
-                resources: ["pods"]
-      `}
-    </CodeBlock>
+                  - group: "rbac.authorization.k8s.io"
+                    resources:
+                      - "roles"
+                      - "rolebindings"
+                      - "clusterroles"
+                      - "clusterrolebindings"
 
-    <p>
-      Пример исходного запроса от клиента:
-    </p>
-    <CodeBlock language="bash">
-      {dedent`
-        curl -k \\
-          -X POST \\
-          --header "Authorization: Bearer $TOKEN" \\
-          --header "Content-Type: application/json" \\
-          --data '{"apiVersion":"v1","kind":"Pod","metadata":{"name":"nginx"},"spec":{"containers":[{"name":"nginx","image":"nginx"}]}}' \\
-          https://127.0.0.1:6443/api/v1/namespaces/default/pods
-      `}
-    </CodeBlock>
+                  - group: "scheduling.k8s.io"
+                    resources:
+                      - "priorityclasses"
 
-    <p>
-      Пример события аудита, записанного при уровне <code>Request</code>:
-    </p>
-    <CodeBlock language="json">
-      {dedent`
-        {
-          "kind": "Event",
-          "apiVersion": "audit.k8s.io/v1",
-          "level": "Request",
-          "verb": "create",
-          "requestURI": "/api/v1/namespaces/default/pods",
-          "requestObject": {
-            "metadata": {
-              "name": "nginx"
-            },
-            "spec": {
-              "containers": [
-                {
-                  "name": "nginx",
-                  "image": "nginx"
-                }
-              ]
-            }
-          },
-          "user": {
-            "username": "system:serviceaccount:default:my-app"
-          },
-          "objectRef": {
-            "resource": "pods",
-            "namespace": "default",
-            "name": "nginx"
-          },
-          "responseStatus": {
-            "code": 200
-          }
-        }
-      `}
-    </CodeBlock>
-  </TabItem>
+                  - group: "node.k8s.io"
+                    resources:
+                      - "runtimeclasses"
 
-  <TabItem value="full">
-    <p>
-      Полная политика аудита, логирующая всё содержимое запросов и ответов. Используется в средах с повышенными требованиями к наблюдаемости и безопасному расследованию инцидентов.
-    </p>
-    <CodeBlock language="yaml">
-      {dedent`
-        apiVersion: audit.k8s.io/v1
-        kind: Policy
-        rules:
-          - level: RequestResponse
-      `}
-    </CodeBlock>
+                  - group: "networking.k8s.io"
+                    resources:
+                      - "ingressclasses"
 
-    <p>
-      Пример исходного запроса от клиента:
-    </p>
-    <CodeBlock language="bash">
-      {dedent`
-        curl -k \\
-          -X POST \\
-          --header "Authorization: Bearer $TOKEN" \\
-          --header "Content-Type: application/json" \\
-          --data '{"apiVersion":"v1","kind":"Pod","metadata":{"name":"nginx"},"spec":{"containers":[{"name":"nginx","image":"nginx"}]}}' \\
-          https://127.0.0.1:6443/api/v1/namespaces/default/pods
-      `}
-    </CodeBlock>
+                  - group: "flowcontrol.apiserver.k8s.io"
+                    resources:
+                      - "flowschemas"
+                      - "prioritylevelconfigurations"
 
-    <p>
-      Пример события аудита, записанного при уровне <code>RequestResponse</code>:
-    </p>
-    <CodeBlock language="json">
-      {dedent`
-        {
-          "kind": "Event",
-          "apiVersion": "audit.k8s.io/v1",
-          "level": "RequestResponse",
-          "verb": "create",
-          "requestURI": "/api/v1/namespaces/default/pods",
-          "requestObject": {
-            "metadata": {
-              "name": "nginx"
-            },
-            "spec": {
-              "containers": [
-                {
-                  "name": "nginx",
-                  "image": "nginx"
-                }
-              ]
-            }
-          },
-          "responseObject": {
-            "status": "Success"
-          },
-          "user": {
-            "username": "system:serviceaccount:default:my-app"
-          },
-          "responseStatus": {
-            "code": 201
-          }
-        }
-      `}
-    </CodeBlock>
-  </TabItem>
+                  - group: "discovery.k8s.io"
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "endpointslices"
+                    resourceNames:
+                      - "kubernetes"
 
-</Tabs>
+                  - group: "coordination.k8s.io"
+                    resources:
+                      - "leases"
 
-#### Настройка API-сервера
+                  - group: "apiregistration.k8s.io"
+                    resources:
+                      - "apiservices"
+
+                  - group: "apiextensions.k8s.io"
+                    resources:
+                      - "customresourcedefinitions"
+
+                  - group: "admissionregistration.k8s.io"
+                    resources:
+                      - "validatingwebhookconfigurations"
+                      - "mutatingwebhookconfigurations"
+                      - "validatingadmissionpolicybindings"
+                      - "validatingadmissionpolicies"
+
+                  - group: ""
+                    resources:
+                      - "endpoints"
+                      - "limitranges"
+                      - "namespaces"
+                      - "nodes"
+                      - "persistentvolumes"
+                      - "pods"
+                      - "resourcequotas"
+                      - "secrets"
+                      - "serviceaccounts"
+                      - "services"
+                      - "configmaps"
+
+              # 3. Сайлентим CREATE-запросы kube-apiserver к тем же API-группам и ресурсам
+              - level: None
+                verbs: ["create"]
+                users:
+                  - "system:apiserver"
+                resources:
+                  - group: "scheduling.k8s.io"
+                    resources:
+                      - "priorityclasses"
+                  - group: "rbac.authorization.k8s.io"
+                    resources:
+                      - "roles"
+                      - "rolebindings"
+                      - "clusterroles"
+                      - "clusterrolebindings"
+                  - group: "flowcontrol.apiserver.k8s.io"
+                    resources:
+                      - "flowschemas"
+                      - "prioritylevelconfigurations"
+                  - group: "discovery.k8s.io"
+                    resources:
+                      - "endpointslices"
+                  - group: "coordination.k8s.io"
+                    resources:
+                      - "leases"
+                  - group: "apiregistration.k8s.io"
+                    resources:
+                      - "apiservices"
+                  - group: ""
+                    resources:
+                      - "configmaps"
+                      - "services"
+                      - "endpoints"
+                      - "namespaces"
+
+              # 4. Сайлентим PATCH-запросы kube-apiserver к подресурсу status в flowcontrol.apiserver.k8s.io/flowschemas
+              - level: None
+                verbs: ["patch"]
+                users:
+                  - "system:apiserver"
+                resources:
+                  - group: "flowcontrol.apiserver.k8s.io"
+                    resources:
+                      - "flowschemas/status"
+
+              # 5. Сайлентим UPDATE-запросы kube-apiserver к coordination.k8s.io/leases и core/v1/configmaps
+              - level: None
+                verbs: ["update"]
+                users:
+                  - "system:apiserver"
+                resources:
+                  - group: "coordination.k8s.io"
+                    resources:
+                      - "leases"
+                  - group: ""
+                    resources:
+                      - "configmaps"
+          `}
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Подавление шума от kube-controller-manager </strong></td>
+      <td>
+        <YamlModal
+          yamlContent={dedent`
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+
+              # 1. Сайлентим LIST и WATCH запросы от kube-controller-manager для многочисленных API-групп и ресурсов
+              - level: None
+                verbs: ["list", "watch"]
+                users:
+                  - "system:kube-controller-manager"
+                resources:
+                  - group: "storage.k8s.io"
+                    resources:
+                      - "volumeattributesclasses"
+                      - "volumeattachments"
+                      - "storageclasses"
+                      - "csistoragecapacities"
+                      - "csinodes"
+                      - "csidrivers"
+                  - group: "scheduling.k8s.io"
+                    resources:
+                      - "priorityclasses"
+                  - group: "resource.k8s.io"
+                    resources:
+                      - "resourceslices"
+                      - "resourceclassparameters"
+                      - "resourceclasses"
+                      - "resourceclaimtemplates"
+                      - "resourceclaims"
+                      - "resourceclaimparameters"
+                      - "podschedulingcontexts"
+                  - group: "rbac.authorization.k8s.io"
+                    resources:
+                      - "roles"
+                      - "rolebindings"
+                      - "clusterroles"
+                      - "clusterrolebindings"
+                  - group: "policy"
+                    resources:
+                      - "poddisruptionbudgets"
+                  - group: "node.k8s.io"
+                    resources:
+                      - "runtimeclasses"
+                  - group: "networking.k8s.io"
+                    resources:
+                      - "servicecidrs"
+                      - "ipaddresses"
+                      - "networkpolicies"
+                      - "ingresses"
+                      - "ingressclasses"
+                  - group: "internal.apiserver.k8s.io"
+                    resources:
+                      - "storageversions"
+                  - group: "flowcontrol.apiserver.k8s.io"
+                    resources:
+                      - "prioritylevelconfigurations"
+                      - "flowschemas"
+                  - group: "discovery.k8s.io"
+                    resources:
+                      - "endpointslices"
+                  - group: "coordination.k8s.io"
+                    resources:
+                      - "leases"
+                  - group: "certificates.k8s.io"
+                    resources:
+                      - "certificatesigningrequests"
+                  - group: "batch"
+                    resources:
+                      - "jobs"
+                      - "cronjobs"
+                  - group: "autoscaling"
+                    resources:
+                      - "horizontalpodautoscalers"
+                  - group: "apps"
+                    resources:
+                      - "statefulsets"
+                      - "replicasets"
+                      - "deployments"
+                      - "daemonsets"
+                      - "controllerrevisions"
+                  - group: "apiregistration.k8s.io"
+                    resources:
+                      - "apiservices"
+                  - group: "apiextensions.k8s.io"
+                    resources:
+                      - "customresourcedefinitions"
+                  - group: "admissionregistration.k8s.io"
+                    resources:
+                      - "validatingwebhookconfigurations"
+                      - "mutatingwebhookconfigurations"
+                      - "validatingadmissionpolicybindings"
+                      - "validatingadmissionpolicies"
+                  - group: ""
+                    resources:
+                      - "services"
+                      - "serviceaccounts"
+                      - "secrets"
+                      - "resourcequotas"
+                      - "replicationcontrollers"
+                      - "podtemplates"
+                      - "pods"
+                      - "persistentvolumes"
+                      - "persistentvolumeclaims"
+                      - "nodes"
+                      - "namespaces"
+                      - "limitranges"
+                      - "endpoints"
+                      - "configmaps"
+
+              # 2. Сайлентим GET и UPDATE запросы от kube-controller-manager к coordination.k8s.io/leases
+              - level: None
+                verbs: ["get", "update"]
+                users:
+                  - "system:kube-controller-manager"
+                resources:
+                  - group: "coordination.k8s.io"
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "leases"
+                    resourceNames:
+                      - "kube-controller-manager"
+
+              # 3. Сайлентим CREATE-токены для ServiceAccount в kube-system от kube-controller-manager
+              - level: None
+                verbs: ["create"]
+                users:
+                  - "system:kube-controller-manager"
+                resources:
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "serviceaccounts/token"
+                    resourceNames:
+                      - "ttl-controller"
+                      - "node-controller"
+
+              # 4. Сайлентим GET запросы к ServiceAccount в kube-system от kube-controller-manager
+              - level: None
+                verbs: ["get"]
+                users:
+                  - "system:kube-controller-manager"
+                resources:
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "serviceaccounts"
+                    resourceNames:
+                      - "ttl-controller"
+                      - "node-controller"
+          `}
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Подавление шума от kube-scheduler</strong></td>
+      <td>
+        <YamlModal
+          yamlContent={dedent`
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+
+              # 1. Сайлентим все LIST и WATCH запросы от kube-scheduler
+              - level: None
+                verbs: ["list", "watch"]
+                users:
+                  - "system:kube-scheduler"
+                resources:
+                  - group: "storage.k8s.io"
+                    resources:
+                      - "storageclasses"
+                      - "csistoragecapacities"
+                      - "csinodes"
+                      - "csidrivers"
+
+                  - group: "policy"
+                    resources:
+                      - "poddisruptionbudgets"
+
+                  - group: "apps"
+                    resources:
+                      - "statefulsets"
+                      - "replicasets"
+
+                  - group: ""
+                    resources:
+                      - "services"
+                      - "replicationcontrollers"
+                      - "pods"
+                      - "persistentvolumes"
+                      - "persistentvolumeclaims"
+                      - "nodes"
+                      - "namespaces"
+
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "configmaps"
+                    resourceNames:
+                      - "extension-apiserver-authentication"
+
+              # 2. Сайлентим GET и UPDATE запросы от kube-scheduler к coordination.k8s.io/leases
+              - level: None
+                verbs: ["get", "update"]
+                users:
+                  - "system:kube-scheduler"
+                resources:
+                  - group: "coordination.k8s.io"
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "leases"
+                    resourceNames:
+                      - "kube-scheduler"
+          `}
+        />
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Подавление шума от kubelet </strong></td>
+      <td>
+        <YamlModal
+          yamlContent={dedent`
+            ---
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            rules:
+
+              # 1. Сайлентим LIST и WATCH запросы от всех узлов (system:nodes)
+              - level: None
+                verbs: ["list", "watch"]
+                userGroups:
+                  - "system:nodes"
+                resources:
+                  - group: "storage.k8s.io"
+                    resources:
+                      - "csinodes"
+                      - "csidrivers"
+                  - group: "node.k8s.io"
+                    resources:
+                      - "runtimeclasses"
+                  - group: ""
+                    resources:
+                      - "services"
+                      - "pods"
+                      - "nodes"
+
+              # 2. Сайлентим GET запросы от system:nodes
+              - level: None
+                verbs: ["get"]
+                userGroups:
+                  - "system:nodes"
+                resources:
+                  - group: "coordination.k8s.io"
+                    namespaces: ["kube-node-lease"]
+                    resources:
+                      - "leases"
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "pods"
+                  - group: ""
+                    resources:
+                      - "nodes"
+                  - group: "storage.k8s.io"
+                    resources:
+                      - "csinodes"
+
+              # 3. Сайлентим UPDATE запросы от system:nodes
+              - level: None
+                verbs: ["update"]
+                userGroups:
+                  - "system:nodes"
+                resources:
+                  - group: "coordination.k8s.io"
+                    namespaces: ["kube-node-lease"]
+                    resources:
+                      - "leases"
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "pods"
+
+              # 4. Сайлентим PATCH запросы от system:nodes
+              - level: None
+                verbs: ["patch"]
+                userGroups:
+                  - "system:nodes"
+                resources:
+                  - group: ""
+                    resources:
+                      - "nodes/status"
+                  - group: ""
+                    namespaces: ["kube-system"]
+                    resources:
+                      - "pods/status"
+                  - group: ""
+                    namespaces:
+                      - "kube-system"
+                      - "default"
+                    resources:
+                      - "pods"
+                      - "events"
+
+              # 5. Сайлентим CREATE запросы от system:nodes
+              - level: None
+                verbs: ["create"]
+                userGroups:
+                  - "system:nodes"
+                resources:
+                  - group: ""
+                    resources:
+                      - "nodes"
+                  - group: ""
+                    namespaces:
+                      - "kube-system"
+                      - "default"
+                    resources:
+                      - "events"
+                  - group: ""
+                    namespaces:
+                      - "kube-system"
+                    resources:
+                      - "pods"
+          `}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Настройка API-сервера
 
 Для активации системы аудита необходимо указать путь к файлу политики с помощью параметра запуска API-сервера:
 
@@ -476,11 +772,9 @@ Kube-apiserver генерирует уникальный `auditID` для каж
   `}
 </CodeBlock>
 
-#### Аудит Webhook-запросов
+#### Аудит webhook-запросов
 
-Запросы от API-сервера к внешним admission webhook'ам тоже могут быть зааудированы. Это позволяет видеть причину отказа при ошибке в ValidatingAdmissionWebhook.
-
-Рекомендуется повышать уровень логирования до `RequestResponse` для ресурсов `admission.k8s.io`, чтобы отлаживать поведение контроллеров.
+Запросы от API-сервера к внешним admission webhook'ам тоже могут быть зааудированы. Это позволяет видеть причину отказа при ошибке в ValidatingAdmissionWebhook. Рекомендуется повышать уровень логирования до `RequestResponse` для ресурсов `admissionregistration.k8s.io`, чтобы отлаживать поведение контроллеров.
 
 #### Фильтрация по namespace и пользователям
 
